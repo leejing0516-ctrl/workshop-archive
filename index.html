@@ -1,0 +1,964 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>工作坊簡報彙整</title>
+<meta name="description" content="歷年共備工作坊簡報存根：依主題、對象與場次分類，可搜尋與篩選。">
+<style>
+  :root {
+    --bg: #F2F3EF;
+    --surface: #FFFFFF;
+    --surface-sunken: #EAEBE6;
+    --text: #16213A;
+    --text-muted: #5B6472;
+    --border: rgba(22, 33, 58, 0.14);
+    --border-strong: rgba(22, 33, 58, 0.28);
+    --accent-gold: #B9832C;
+    --accent-teal: #2F6B63;
+    --accent-sage: #5C7F4E;
+    --accent-plum: #5B4B8A;
+    --accent-clay: #A15C3E;
+    --accent-rose: #A34A5C;
+    --accent-crimson: #A83A34;
+    --accent-emerald: #1F8A5F;
+    --accent-cobalt: #2E5FA3;
+    --focus: #2F6B63;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #121826;
+      --surface: #1B2436;
+      --surface-sunken: #171F30;
+      --text: #EDEEE9;
+      --text-muted: #9AA3B4;
+      --border: rgba(237, 238, 233, 0.16);
+      --border-strong: rgba(237, 238, 233, 0.3);
+      --accent-gold: #D9A94C;
+      --accent-teal: #5FB6A9;
+      --accent-sage: #8FBB7B;
+      --accent-plum: #A594D6;
+      --accent-clay: #D08A66;
+      --accent-rose: #D98BA0;
+      --accent-crimson: #E0736A;
+      --accent-emerald: #4FBF8C;
+      --accent-cobalt: #6FA8E8;
+      --focus: #5FB6A9;
+    }
+  }
+
+  :root[data-theme="dark"] {
+    --bg: #121826;
+    --surface: #1B2436;
+    --surface-sunken: #171F30;
+    --text: #EDEEE9;
+    --text-muted: #9AA3B4;
+    --border: rgba(237, 238, 233, 0.16);
+    --border-strong: rgba(237, 238, 233, 0.3);
+    --accent-gold: #D9A94C;
+    --accent-teal: #5FB6A9;
+    --accent-sage: #8FBB7B;
+    --accent-plum: #A594D6;
+    --accent-clay: #D08A66;
+    --accent-rose: #D98BA0;
+    --accent-crimson: #E0736A;
+    --accent-emerald: #4FBF8C;
+    --accent-cobalt: #6FA8E8;
+    --focus: #5FB6A9;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", "Heiti TC", sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .page {
+    max-width: 920px;
+    margin: 0 auto;
+    padding: 56px 24px 96px;
+  }
+
+  /* ---------- Masthead ---------- */
+
+  .masthead {
+    position: relative;
+    padding-bottom: 32px;
+    margin-bottom: 40px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .triangle-motif {
+    position: absolute;
+    top: 2px;
+    right: 0;
+    width: 88px;
+    height: 76px;
+    opacity: 0.9;
+  }
+
+  .triangle-motif svg { width: 100%; height: 100%; display: block; }
+
+  .eyebrow {
+    margin: 0 0 10px;
+    font-family: ui-monospace, "SF Mono", "Cascadia Mono", "Roboto Mono", Consolas, monospace;
+    font-size: 12.5px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+  }
+
+  h1 {
+    margin: 0 0 14px;
+    font-family: "Noto Serif TC", "Songti TC", "PMingLiU", serif;
+    font-weight: 700;
+    font-size: clamp(30px, 4.6vw, 42px);
+    letter-spacing: 0.01em;
+    text-wrap: balance;
+    max-width: 14em;
+  }
+
+  .tagline {
+    margin: 0 0 20px;
+    max-width: 46em;
+    font-size: 15.5px;
+    line-height: 1.75;
+    color: var(--text-muted);
+  }
+
+  .stat-line {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-family: ui-monospace, "SF Mono", "Cascadia Mono", "Roboto Mono", Consolas, monospace;
+    font-size: 13px;
+    color: var(--text-muted);
+  }
+
+  .stat-line .dot { opacity: 0.5; }
+  .stat-line strong { color: var(--text); font-weight: 600; }
+
+  /* ---------- Controls ---------- */
+
+  .controls {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-bottom: 32px;
+  }
+
+  #searchInput {
+    width: 100%;
+    padding: 12px 16px;
+    border-radius: 8px;
+    border: 1px solid var(--border-strong);
+    background: var(--surface);
+    color: var(--text);
+    font-family: inherit;
+    font-size: 14.5px;
+  }
+
+  #searchInput::placeholder { color: var(--text-muted); }
+
+  #searchInput:focus-visible {
+    outline: 2px solid var(--focus);
+    outline-offset: 1px;
+  }
+
+  .chip-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .chip {
+    appearance: none;
+    border: 1px solid var(--border-strong);
+    background: var(--surface);
+    color: var(--text-muted);
+    font-family: ui-monospace, "SF Mono", "Cascadia Mono", "Roboto Mono", Consolas, monospace;
+    font-size: 12.5px;
+    letter-spacing: 0.03em;
+    padding: 7px 14px;
+    border-radius: 999px;
+    cursor: pointer;
+    transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+  }
+
+  .chip:hover { border-color: var(--focus); color: var(--text); }
+
+  .chip:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+
+  .chip.active {
+    background: var(--text);
+    border-color: var(--text);
+    color: var(--bg);
+  }
+
+  .chip .count { opacity: 0.65; margin-left: 4px; }
+
+  /* ---------- Board / tickets ---------- */
+
+  .board {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .ticket {
+    display: flex;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 1px 2px rgba(22, 33, 58, 0.04);
+    transition: opacity 0.2s ease, transform 0.2s ease;
+  }
+
+  .ticket[hidden] { display: none; }
+
+  .ticket-main {
+    flex: 1;
+    min-width: 0;
+    padding: 24px 26px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .category-tag {
+    align-self: flex-start;
+    font-family: ui-monospace, "SF Mono", "Cascadia Mono", "Roboto Mono", Consolas, monospace;
+    font-size: 11.5px;
+    letter-spacing: 0.06em;
+    padding: 3px 10px;
+    border-radius: 999px;
+    color: var(--surface);
+    background: var(--cat-color, var(--text-muted));
+  }
+
+  .ticket[data-category="life-design"] { --cat-color: var(--accent-sage); }
+  .ticket[data-category="vision"] { --cat-color: var(--accent-teal); }
+  .ticket[data-category="culture"] { --cat-color: var(--accent-gold); }
+  .ticket[data-category="talent"] { --cat-color: var(--accent-plum); }
+  .ticket[data-category="school-visit"] { --cat-color: var(--accent-clay); }
+  .ticket[data-category="parent-circle"] { --cat-color: var(--accent-rose); }
+  .ticket[data-category="classroom"] { --cat-color: var(--accent-crimson); }
+  .ticket[data-category="finance"] { --cat-color: var(--accent-emerald); }
+  .ticket[data-category="recruit"] { --cat-color: var(--accent-cobalt); }
+
+  .ticket-main h2 {
+    margin: 2px 0 0;
+    font-family: "Noto Serif TC", "Songti TC", "PMingLiU", serif;
+    font-size: 21px;
+    font-weight: 700;
+    line-height: 1.4;
+    text-wrap: balance;
+  }
+
+  .program-name {
+    margin: -6px 0 4px;
+    font-size: 13.5px;
+    color: var(--text-muted);
+  }
+
+  .program-name .speaker::before {
+    content: "·";
+    margin: 0 6px;
+    opacity: 0.6;
+  }
+
+  .overview {
+    margin: 0;
+    font-size: 14.5px;
+    line-height: 1.85;
+    color: var(--text);
+    max-width: 62ch;
+  }
+
+  .tag-list {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px 10px;
+    margin: 6px 0 0;
+    padding: 0;
+    font-family: ui-monospace, "SF Mono", "Cascadia Mono", "Roboto Mono", Consolas, monospace;
+    font-size: 12px;
+    color: var(--text-muted);
+  }
+
+  /* perforated divider */
+  .ticket-divider {
+    position: relative;
+    width: 0;
+    flex-shrink: 0;
+    border-left: 1.5px dashed var(--border-strong);
+    margin: 14px 0;
+  }
+
+  .ticket-divider::before,
+  .ticket-divider::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: var(--bg);
+    transform: translateX(-50%);
+  }
+
+  .ticket-divider::before { top: -9px; }
+  .ticket-divider::after { bottom: -9px; }
+
+  .ticket-stub {
+    flex-shrink: 0;
+    width: 208px;
+    padding: 24px 22px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 16px;
+    background: var(--surface-sunken);
+  }
+
+  .ticket-stub dl {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .ticket-stub dl > div { display: flex; flex-direction: column; gap: 2px; }
+
+  .ticket-stub dt {
+    font-size: 10.5px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+  }
+
+  .ticket-stub dd {
+    margin: 0;
+    font-family: ui-monospace, "SF Mono", "Cascadia Mono", "Roboto Mono", Consolas, monospace;
+    font-size: 13.5px;
+    font-variant-numeric: tabular-nums;
+    color: var(--text);
+    line-height: 1.4;
+  }
+
+  .view-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    align-self: flex-start;
+    font-family: ui-monospace, "SF Mono", "Cascadia Mono", "Roboto Mono", Consolas, monospace;
+    font-size: 12.5px;
+    letter-spacing: 0.02em;
+    color: var(--text);
+    text-decoration: none;
+    padding: 8px 0 2px;
+    border-bottom: 1.5px solid var(--cat-color, var(--text));
+  }
+
+  .view-link:hover { color: var(--cat-color, var(--text)); }
+  .view-link:focus-visible { outline: 2px solid var(--focus); outline-offset: 3px; }
+
+  .empty-state {
+    text-align: center;
+    padding: 48px 0;
+    color: var(--text-muted);
+    font-size: 14px;
+  }
+
+  /* ---------- Responsive ---------- */
+
+  @media (max-width: 640px) {
+    .page { padding: 40px 18px 72px; }
+    .triangle-motif { width: 60px; height: 52px; }
+
+    .ticket { flex-direction: column; }
+
+    .ticket-divider {
+      width: auto;
+      height: 0;
+      border-left: none;
+      border-top: 1.5px dashed var(--border-strong);
+      margin: 0 20px;
+    }
+
+    .ticket-divider::before,
+    .ticket-divider::after {
+      top: 50%;
+      left: auto;
+      transform: translateY(-50%);
+    }
+
+    .ticket-divider::before { left: -9px; }
+    .ticket-divider::after { right: -9px; left: auto; }
+
+    .ticket-stub {
+      width: auto;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .ticket-stub dl { flex-direction: row; flex-wrap: wrap; gap: 14px; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .ticket { transition: none; }
+  }
+</style>
+
+</head>
+<body>
+<div class="page">
+  <header class="masthead">
+    <div class="triangle-motif" aria-hidden="true">
+      <svg viewBox="0 0 88 76" fill="none">
+        <path d="M44 4 L84 70 L4 70 Z" fill="none" stroke="var(--border-strong)" stroke-width="1.5"/>
+        <path d="M30 40 L52 40 L41 60 Z" fill="var(--accent-gold)" opacity="0.85"/>
+        <path d="M44 12 L60 40 L28 40 Z" fill="var(--accent-teal)" opacity="0.55"/>
+      </svg>
+    </div>
+    <p class="eyebrow">李志軒 · Workshop Archive</p>
+    <h1>工作坊簡報彙整</h1>
+    <p class="tagline">歷年共備工作坊與講座的簡報存根，依主題、適用對象與場次分類收藏，方便日後回顧與取用。</p>
+    <div class="stat-line">
+      <strong id="visibleCount">20</strong><span>場已收錄</span>
+      <span class="dot">·</span>
+      <span>最後更新 2026.09.17</span>
+    </div>
+  </header>
+
+  <div class="controls">
+    <input type="search" id="searchInput" placeholder="搜尋主題、對象或關鍵字…" aria-label="搜尋工作坊" />
+    <div class="chip-row" id="chipRow">
+      <button class="chip active" data-filter="all" type="button">全部 <span class="count">20</span></button>
+      <button class="chip" data-filter="life-design" type="button">生涯設計 <span class="count">4</span></button>
+      <button class="chip" data-filter="vision" type="button">願景領導 <span class="count">2</span></button>
+      <button class="chip" data-filter="culture" type="button">團隊文化 <span class="count">2</span></button>
+      <button class="chip" data-filter="talent" type="button">人才發展 <span class="count">4</span></button>
+      <button class="chip" data-filter="school-visit" type="button">校訪共學 <span class="count">1</span></button>
+      <button class="chip" data-filter="parent-circle" type="button">親職陪伴 <span class="count">2</span></button>
+      <button class="chip" data-filter="classroom" type="button">班級經營 <span class="count">3</span></button>
+      <button class="chip" data-filter="finance" type="button">理財教育 <span class="count">1</span></button>
+      <button class="chip" data-filter="recruit" type="button">教師招募 <span class="count">1</span></button>
+    </div>
+  </div>
+
+  <main class="board" id="board">
+
+    <article class="ticket" data-category="classroom" data-search="樹立高學業期待 王牌教師的教學力49招 第一章 李志軒校長 教師工作坊 有問必答 No Opt Out 刻意練習">
+      <div class="ticket-main">
+        <span class="category-tag">班級經營</span>
+        <h2>樹立高學業期待——五個技巧</h2>
+        <p class="program-name">《王牌教師的教學力49招》第一章・教師工作坊 <span class="speaker">帶領人:李志軒校長</span></p>
+        <p class="overview">取材自《王牌教師的教學力49招》第一章，以「投手練基本動作」為喻——「今天不是來聽的，是來練的」。五個技巧各12分鐘(示範3分鐘+基礎練習4分鐘+進階練習3分鐘)，情境直接投影供兩兩練習，包含技巧一「有問必答(No Opt Out)」等具體教學動作拆解(問A→A答錯→問B→B答對轉回A→A複述→簡短稱讚)。最後以三人一組15分鐘綜合演練串起五招，並用行動承諾收尾——選一招、選一個情境，下週開始刻意練習。</p>
+        <ul class="tag-list">
+          <li>#教學技巧</li><li>#王牌教師</li><li>#刻意練習</li>
+        </ul>
+      </div>
+      <div class="ticket-divider" aria-hidden="true"></div>
+      <div class="ticket-stub">
+        <dl>
+          <div><dt>日期</dt><dd>2026.09.16</dd></div>
+          <div><dt>時數</dt><dd>90 分鐘</dd></div>
+          <div><dt>對象</dt><dd>全體教師</dd></div>
+        </dl>
+        <a class="view-link" href="https://canva.link/rlgt5yc3avqova8" target="_blank" rel="noopener noreferrer">查看簡報 ↗</a>
+      </div>
+    </article>
+
+
+
+    <article class="ticket" data-category="life-design" data-search="共讀的力量第一次分享 成長性思維學習指南 南梓實驗小學 李志軒校長 共讀會 一三一法 成長心態 固定型思維">
+      <div class="ticket-main">
+        <span class="category-tag">生涯設計</span>
+        <h2>共讀的力量：第一次分享</h2>
+        <p class="program-name">《成長性思維學習指南》共讀會 <span class="speaker">領讀示範:李志軒校長</span></p>
+        <p class="overview">教師讀書會的第一次共讀，由校長示範帶讀，建立讀書會的共同節奏。以「一三一法」為帶讀工具——閱讀推薦序與前言《兩種心態》後，濃縮成一句話、三重點、一行動。引導老師分享自己聽過或說過的固定型思維語句，並寫下接下來可以採取的一個具體行動，最後確認下週帶讀老師與範圍，讓共讀成為教師間持續累積的習慣。</p>
+        <ul class="tag-list">
+          <li>#共讀會</li><li>#成長性思維</li><li>#一三一法</li>
+        </ul>
+      </div>
+      <div class="ticket-divider" aria-hidden="true"></div>
+      <div class="ticket-stub">
+        <dl>
+          <div><dt>日期</dt><dd>2026.09.16</dd></div>
+          <div><dt>對象</dt><dd>全體教師</dd></div>
+          <div><dt>主辦</dt><dd>南梓實小</dd></div>
+        </dl>
+        <a class="view-link" href="https://canva.link/6ohpc41c4ruehju" target="_blank" rel="noopener noreferrer">查看簡報 ↗</a>
+      </div>
+    </article>
+
+
+
+    <article class="ticket" data-category="culture" data-search="南梓實小の願景目標核心價值重要原則 期初校務會議 李志軒校長 願景 目標方向 化繁為簡 課題分離 共好進化 KIST六大核心價值">
+      <div class="ticket-main">
+        <span class="category-tag">團隊文化</span>
+        <h2>南梓實小の願景・目標・核心價值・重要原則</h2>
+        <p class="program-name">115學年度上學期・期初校務會議 <span class="speaker">李志軒校長</span></p>
+        <p class="overview">學年度開學前的定調簡報，先把方向說清楚。願景：「激發潛能，幫助孩子創造無限可能」——教育不是把孩子塑造成同一個樣子，而是把空間留出來讓潛能被看見。目標方向三支柱：化繁為簡(第一性原理，追溯本質、拒絕盲從)、課題分離(允許別人做自己)、共好進化(不是零和賽局而是一起把能力練起來)。並重新對齊 KIST 六大核心價值的具體期望行為與原則，作為新學期教師共同依循的重要原則。</p>
+        <ul class="tag-list">
+          <li>#願景目標</li><li>#核心價值</li><li>#校務會議</li>
+        </ul>
+      </div>
+      <div class="ticket-divider" aria-hidden="true"></div>
+      <div class="ticket-stub">
+        <dl>
+          <div><dt>日期</dt><dd>2026.08.28</dd></div>
+          <div><dt>對象</dt><dd>全體教師</dd></div>
+          <div><dt>主辦</dt><dd>南梓實小</dd></div>
+        </dl>
+        <a class="view-link" href="https://canva.link/z6t16znajnz7lf2" target="_blank" rel="noopener noreferrer">查看簡報 ↗</a>
+      </div>
+    </article>
+
+
+
+    <article class="ticket" data-category="classroom" data-search="課題分離 影響圈 南梓實小教師增能工作坊 李志軒 阿德勒 柯維 當責 不寫作業 家庭功能失能 教養觀念偏差">
+      <div class="ticket-main">
+        <span class="category-tag">班級經營</span>
+        <h2>課題分離 × 影響圈</h2>
+        <p class="program-name">南梓實小・教師增能工作坊 <span class="speaker">李志軒</span></p>
+        <p class="overview">結合阿德勒課題分離、柯維影響圈／關注圈與當責觀念，提供教學現場的判準工具，協助教師處理孩子不寫作業、家庭功能失能、家長教養觀念偏差等棘手情境。以「Check-in 交流」課前心理卸載開場，接著矩陣講解(課題所有權 × 影響圈四象限)、方法論(先列項再分類避免一刀切)、矩陣定優先序，中場休息後進行案例示範與分組練習(帶入真實案例列項→分類→討論)，最後回饋統整常見誤區並以 Q&A 收尾。</p>
+        <ul class="tag-list">
+          <li>#課題分離</li><li>#影響圈</li><li>#教師增能</li>
+        </ul>
+      </div>
+      <div class="ticket-divider" aria-hidden="true"></div>
+      <div class="ticket-stub">
+        <dl>
+          <div><dt>日期</dt><dd>2026.08.12</dd></div>
+          <div><dt>時數</dt><dd>160 分鐘</dd></div>
+          <div><dt>對象</dt><dd>全體教師</dd></div>
+        </dl>
+        <a class="view-link" href="https://canva.link/qqzbicap2a7p97f" target="_blank" rel="noopener noreferrer">查看簡報 ↗</a>
+      </div>
+    </article>
+
+
+
+    <article class="ticket" data-category="life-design" data-search="教育路上最好的自己 南梓實驗小學全體教師工作坊 李志軒校長 柯普朗 領導最好的自己 初心地圖 職涯反思">
+      <div class="ticket-main">
+        <span class="category-tag">生涯設計</span>
+        <h2>教育路上，最好的自己</h2>
+        <p class="program-name">南梓實驗小學全體教師工作坊 <span class="speaker">李志軒校長</span></p>
+        <p class="overview">取材自《領導最好的自己：成就自我理想與夢想的職涯拼圖》(蘿伯・柯普朗)，以「不是每件算得出來的事，都算得出意義」為開場理念，重新定義成就——不是問如何出人頭地，而是問是否已充分發揮自己的潛能。分模組進行：模組一「初心地圖」認識自己的熱情與價值觀(40分鐘)、模組二「三項任務對照」從優秀到卓越的路徑(40分鐘)，並延伸至建立支持網絡，帶領教師重新聚焦教育初衷。</p>
+        <ul class="tag-list">
+          <li>#職涯反思</li><li>#教育初衷</li><li>#自我覺察</li>
+        </ul>
+      </div>
+      <div class="ticket-divider" aria-hidden="true"></div>
+      <div class="ticket-stub">
+        <dl>
+          <div><dt>日期</dt><dd>2026.08.12</dd></div>
+          <div><dt>時數</dt><dd>150 分鐘</dd></div>
+          <div><dt>對象</dt><dd>全體教師</dd></div>
+        </dl>
+        <a class="view-link" href="https://canva.link/drnbkpfzpp7t4fq" target="_blank" rel="noopener noreferrer">查看簡報 ↗</a>
+      </div>
+    </article>
+
+
+
+    <article class="ticket" data-category="life-design" data-search="發現我的天才 南梓實驗小學全體教師工作坊 蔣玉清主任 李志軒校長 蓋洛普測驗 天賦 StrengthsFinder">
+      <div class="ticket-main">
+        <span class="category-tag">生涯設計</span>
+        <h2>發現我的天才</h2>
+        <p class="program-name">南梓實驗小學全體教師工作坊 <span class="speaker">蔣玉清主任・設計:李志軒校長</span></p>
+        <p class="overview">取材自《發現我的天才：打開34個天賦的禮物》(馬克斯・巴金漢、唐諾・克里夫頓)，以「你已經很好，只是還沒被命名」為開場理念，破除「補短板優先於天賦」的迷思。分兩大模組進行：模組一天賦的迷思與正確觀念(20分鐘)、模組二蓋洛普測驗找出前五大天賦(50分鐘)，最後將天賦轉化為教學實踐的具體行動。</p>
+        <ul class="tag-list">
+          <li>#天賦優勢</li><li>#蓋洛普測驗</li><li>#自我覺察</li>
+        </ul>
+      </div>
+      <div class="ticket-divider" aria-hidden="true"></div>
+      <div class="ticket-stub">
+        <dl>
+          <div><dt>日期</dt><dd>2026.08.12</dd></div>
+          <div><dt>時數</dt><dd>150 分鐘</dd></div>
+          <div><dt>對象</dt><dd>全體教師</dd></div>
+        </dl>
+        <a class="view-link" href="https://canva.link/lw5yg80gw1ntuhb" target="_blank" rel="noopener noreferrer">查看簡報 ↗</a>
+      </div>
+    </article>
+
+
+
+    <article class="ticket" data-category="vision" data-search="實驗教育玩真的 南梓實小迎新工作坊 第一堂課 共築願景對話與想像 李志軒校長 新進教師 心靈同步 破冰遊戲">
+      <div class="ticket-main">
+        <span class="category-tag">願景領導</span>
+        <h2>實驗教育！玩真的！</h2>
+        <p class="program-name">南梓實小迎新工作坊・第一堂課 <span class="speaker">李志軒校長</span></p>
+        <p class="overview">以破冰遊戲《心靈同步》開場——每人抽一張隱藏數字卡，靠觀察與默契排出順序，練習非語言溝通與團隊默契。接著透過對焦活動《我們眼中的實驗教育》，小組討論實驗教育的價值與特徵，共同製作「南梓實驗教育意象圖」，在對話中形塑對實驗教育理念與願景的共識，為新進教師開啟課程與教學的共同想像。</p>
+        <ul class="tag-list">
+          <li>#新進教師</li><li>#願景共識</li><li>#實驗教育</li>
+        </ul>
+      </div>
+      <div class="ticket-divider" aria-hidden="true"></div>
+      <div class="ticket-stub">
+        <dl>
+          <div><dt>日期</dt><dd>2026.08.12</dd></div>
+          <div><dt>對象</dt><dd>新進教師</dd></div>
+          <div><dt>主辦</dt><dd>南梓實小</dd></div>
+        </dl>
+        <a class="view-link" href="https://canva.link/9n0gucwlz6bful4" target="_blank" rel="noopener noreferrer">查看簡報 ↗</a>
+      </div>
+    </article>
+
+
+
+    <article class="ticket" data-category="finance" data-search="致富好習慣 活出有錢人的樣子 仙草實驗小學 李志軒 理財教育 財富迷思 致富習慣">
+      <div class="ticket-main">
+        <span class="category-tag">理財教育</span>
+        <h2>活出有錢人的樣子</h2>
+        <p class="program-name">致富好習慣 <span class="speaker">李志軒</span></p>
+        <p class="overview">從入場券提問「如果中了一億樂透，我想要做什麼？」出發，破除學生對有錢人的三大迷思：消費行為(其實節儉審慎，而非奢華揮霍)、個性特質(積極參與慈善公益，而非自私高傲)、財富來源(靠創業與長期努力，而非遺產或不正當手段)。搭配 X／O 是非題互動遊戲，引導學生思考生活習慣與財富狀況的關聯，練習在日常生活中實踐致富習慣。</p>
+        <ul class="tag-list">
+          <li>#理財教育</li><li>#致富習慣</li><li>#迷思破除</li>
+        </ul>
+      </div>
+      <div class="ticket-divider" aria-hidden="true"></div>
+      <div class="ticket-stub">
+        <dl>
+          <div><dt>日期</dt><dd>2026.08.12</dd></div>
+          <div><dt>對象</dt><dd>學生</dd></div>
+          <div><dt>主辦</dt><dd>仙草實小</dd></div>
+        </dl>
+        <a class="view-link" href="https://canva.link/nmxcwh2cu320eq8" target="_blank" rel="noopener noreferrer">查看簡報 ↗</a>
+      </div>
+    </article>
+
+
+
+    <article class="ticket" data-category="classroom" data-search="南梓虛擬銀行 遊戲化策略驅動下的班級經營 南梓實驗小學 班級經營 遊戲化 集點 獎勵制度 虛擬銀行">
+      <div class="ticket-main">
+        <span class="category-tag">班級經營</span>
+        <h2>南梓虛擬銀行</h2>
+        <p class="program-name">遊戲化策略驅動下的班級經營</p>
+        <p class="overview">拆解「南梓虛擬銀行」背後的遊戲化驅動引擎。從傳統獎勵制度的困境切入——蓋章、貼紙、兌換券效果總是有限，介紹將班級獎勵數位化、系統化的解方。以漫畫分鏡逐格拆解兩大引擎：進度與成就的即時滿足、抓住動機的視覺化目標／競爭與成就感／行為與獎懲機制，說明如何用遊戲化設計提升班級經營成效。</p>
+        <ul class="tag-list">
+          <li>#班級經營</li><li>#遊戲化</li><li>#虛擬銀行</li>
+        </ul>
+      </div>
+      <div class="ticket-divider" aria-hidden="true"></div>
+      <div class="ticket-stub">
+        <dl>
+          <div><dt>日期</dt><dd>2026.08.12</dd></div>
+          <div><dt>對象</dt><dd>全校教師</dd></div>
+          <div><dt>主辦</dt><dd>南梓實小</dd></div>
+        </dl>
+        <a class="view-link" href="https://canva.link/9uc2kocri0u65ai" target="_blank" rel="noopener noreferrer">查看簡報 ↗</a>
+      </div>
+    </article>
+
+
+
+    <article class="ticket" data-category="parent-circle" data-search="校長開場 小一新生訓練暨家長說明會 南梓實驗小學 李志軒 辦學理念 新生家長 用腦袋想的 用心感受的 一起長大的">
+      <div class="ticket-main">
+        <span class="category-tag">親職陪伴</span>
+        <h2>校長開場</h2>
+        <p class="program-name">小一新生訓練暨家長說明會 <span class="speaker">李志軒校長</span></p>
+        <p class="overview">同一場說明會由校長親自開場，先分享自己從仙草到南梓的辦學初衷——「我來南梓，是因為相信教育可以不一樣！」，再拋出提問：「您送孩子來南梓，最希望他（她）學到什麼？」引導家長發現多數答案都不在課本裡（懂得跟人相處、遇到困難不放棄、找到興趣、有自信），並將南梓定位為「用腦袋想的、用心感受的、一起長大的」學校，為整場說明會定調。</p>
+        <ul class="tag-list">
+          <li>#校長開場</li><li>#辦學理念</li><li>#新生家長</li>
+        </ul>
+      </div>
+      <div class="ticket-divider" aria-hidden="true"></div>
+      <div class="ticket-stub">
+        <dl>
+          <div><dt>日期</dt><dd>2026.08.10</dd></div>
+          <div><dt>對象</dt><dd>小一新生家長</dd></div>
+          <div><dt>主辦</dt><dd>南梓實小</dd></div>
+        </dl>
+        <a class="view-link" href="https://canva.link/z8c5m35e8tm143m" target="_blank" rel="noopener noreferrer">查看簡報 ↗</a>
+      </div>
+    </article>
+
+
+
+    <article class="ticket" data-category="parent-circle" data-search="家長圍圈時間 小一新生 家長座談 南梓實驗小學 親職陪伴 圍圈對話 restorative circle">
+      <div class="ticket-main">
+        <span class="category-tag">親職陪伴</span>
+        <h2>家長圍圈時間</h2>
+        <p class="program-name">小一新生家長座談</p>
+        <p class="overview">專為小一新生家長設計的 20 分鐘圍圈時間，以「不評論、不給建議」「可以選擇通過（pass）」「經驗不用比較，只有不同」三項約定開場，邀請家長以『說』而非『聽』的方式參與。透過「小一小劇場」情境切入——晨間拉扯、校門口的不捨、手機平板的攻防——引導家長分享陪伴孩子適應一年級生活的心情與經驗。</p>
+        <ul class="tag-list">
+          <li>#親職陪伴</li><li>#新生家長</li><li>#圍圈對話</li>
+        </ul>
+      </div>
+      <div class="ticket-divider" aria-hidden="true"></div>
+      <div class="ticket-stub">
+        <dl>
+          <div><dt>日期</dt><dd>2026.08.10</dd></div>
+          <div><dt>時數</dt><dd>09:10–09:30</dd></div>
+          <div><dt>對象</dt><dd>小一新生家長</dd></div>
+        </dl>
+        <a class="view-link" href="https://docs.google.com/presentation/d/1ujBWb81dW6hVJoWVF9VyODWHNsGxNtpNpDJVANlVbxw/edit?usp=sharing" target="_blank" rel="noopener noreferrer">查看簡報 ↗</a>
+      </div>
+    </article>
+
+
+
+    <article class="ticket" data-category="life-design" data-search="做自己的生命設計師 新手教師工作坊 臺南市南梓實驗小學 李志軒 生涯設計 自我探索 新手教師 人生設計">
+      <div class="ticket-main">
+        <span class="category-tag">生涯設計</span>
+        <h2>做自己的生命設計師</h2>
+        <p class="program-name">新手教師工作坊 <span class="speaker">李志軒</span></p>
+        <p class="overview">從「入場券」邀請學員想像十五年後的自己出發，透過三個「對人生的提問」翻轉常見迷思——大學畢業≠長大、主修≠工作、成功≠快樂，進而建立健康／工作／遊戲／愛的人生儀表板與人生羅盤，陪伴新手教師練習設計自己的人生藍圖。</p>
+        <ul class="tag-list">
+          <li>#生涯設計</li><li>#自我探索</li><li>#新手教師</li>
+        </ul>
+      </div>
+      <div class="ticket-divider" aria-hidden="true"></div>
+      <div class="ticket-stub">
+        <dl>
+          <div><dt>日期</dt><dd>2026.08.06</dd></div>
+          <div><dt>對象</dt><dd>新手教師</dd></div>
+          <div><dt>主辦</dt><dd>南梓實小</dd></div>
+        </dl>
+        <a class="view-link" href="https://canva.link/3dim7q96xjuod5r" target="_blank" rel="noopener noreferrer">查看簡報 ↗</a>
+      </div>
+    </article>
+
+
+
+    <article class="ticket" data-category="talent" data-search="領導變革 創新之路 雲菁計畫第五堂課 候用校長 李志軒校長 創新的擴散 創新之後 誠致教育基金會">
+      <div class="ticket-main">
+        <span class="category-tag">人才發展</span>
+        <h2>領導變革・創新之路</h2>
+        <p class="program-name">雲菁計畫・第5堂課 <span class="speaker">李志軒校長</span></p>
+        <p class="overview">以《創新的擴散》與《創新之後》(Lee Vinsel)為理論基礎，帶領雲林縣候用校長重新定義「創新」——強調創新不是導入炫技的科技工具或空降的外部解方，而是看見現場真實問題、做出讓事情變好的改變，規模不拘大小。三小時課程分六站進行：Check-in、創新之後的意見分歧與拉扯、擴散模型、人的維度(生命週期理論應用)、擴散小創新的引信與行動者辨識、IP拼陣與出場券實作收尾。</p>
+        <ul class="tag-list">
+          <li>#領導變革</li><li>#創新擴散</li><li>#候用校長</li>
+        </ul>
+      </div>
+      <div class="ticket-divider" aria-hidden="true"></div>
+      <div class="ticket-stub">
+        <dl>
+          <div><dt>日期</dt><dd>2026.06.11</dd></div>
+          <div><dt>時數</dt><dd>09:00–12:00</dd></div>
+          <div><dt>對象</dt><dd>候用校長</dd></div>
+        </dl>
+        <a class="view-link" href="https://docs.google.com/presentation/d/1rqB6y5r3j2-Md2q2ByYbfR54hJtFP0NL6CioalpJhRg/edit?usp=sharing" target="_blank" rel="noopener noreferrer">查看簡報 ↗</a>
+      </div>
+    </article>
+
+
+
+    <article class="ticket" data-category="school-visit" data-search="雲菁 第二堂課 學校參訪 策略藍圖 拯民國小 林宜誠 誠致教育基金會 KIST 校訪共學 標竿學習">
+      <div class="ticket-main">
+        <span class="category-tag">校訪共學</span>
+        <h2>學校參訪 × 策略藍圖</h2>
+        <p class="program-name">雲菁・第二堂課 <span class="speaker">拯民國小・林宜誠校長</span></p>
+        <p class="overview">財團法人誠致教育基金會主辦的實地訪校課程，全體學員前往拯民國小，透過訪校與對話，看見不同學校實踐教育願景的多元樣貌，並結合「策略藍圖」課程架構，讓理論與實務相互印證。當天並安排分組座位與現場討論，共分七組進行交流。</p>
+        <ul class="tag-list">
+          <li>#校訪共學</li><li>#策略藍圖</li><li>#標竿學習</li>
+        </ul>
+      </div>
+      <div class="ticket-divider" aria-hidden="true"></div>
+      <div class="ticket-stub">
+        <dl>
+          <div><dt>日期</dt><dd>2026.04.02</dd></div>
+          <div><dt>對象</dt><dd>雲菁學員</dd></div>
+          <div><dt>主辦</dt><dd>誠致教育基金會</dd></div>
+        </dl>
+        <a class="view-link" href="https://docs.google.com/presentation/d/14NG9d5yctFea6-87UT6PV1q8ZuKiUVCB7ys9APb7WLU/edit?usp=sharing" target="_blank" rel="noopener noreferrer">查看簡報 ↗</a>
+      </div>
+    </article>
+
+
+
+    <article class="ticket" data-category="talent" data-search="發展團隊 雲菁計畫第二堂課 候用校長 李志軒 誠致教育基金會 六頂思考帽 ARCI矩陣 艾森豪矩陣 O3談話">
+      <div class="ticket-main">
+        <span class="category-tag">人才發展</span>
+        <h2>發展團隊</h2>
+        <p class="program-name">雲菁計畫・第二堂課 <span class="speaker">李志軒</span></p>
+        <p class="overview">以「五階段課程地圖」帶領候用校長從團隊組建走到衝突化解，實作多套管理工具：團隊生成(模擬開局「天命」隨機組隊)、團隊發展(六頂思考帽引導結構化討論)、任務管理(ARCI 矩陣釐清權責)、危機決策(影響圈／關注圈、艾森豪矩陣在壓力下排序任務)、衝突管理(O3 談話搭配 4F 模組化解團隊內部矛盾)。</p>
+        <ul class="tag-list">
+          <li>#發展團隊</li><li>#領導工具</li><li>#候用校長</li>
+        </ul>
+      </div>
+      <div class="ticket-divider" aria-hidden="true"></div>
+      <div class="ticket-stub">
+        <dl>
+          <div><dt>日期</dt><dd>2025.10.30</dd></div>
+          <div><dt>時數</dt><dd>09:00–12:00</dd></div>
+          <div><dt>對象</dt><dd>候用校長</dd></div>
+        </dl>
+        <a class="view-link" href="https://docs.google.com/presentation/d/1qcoresY0wJ3zJSTLa2uTh6dkZCNcC4QL-9WsYF1SIB4/edit?usp=sharing" target="_blank" rel="noopener noreferrer">查看簡報 ↗</a>
+      </div>
+    </article>
+
+
+
+    <article class="ticket" data-category="vision" data-search="找到我們的Why 教師共備工作坊 南梓實驗小學 團隊共識 願景領導 Simon Sinek 黃金圈 上午場">
+      <div class="ticket-main">
+        <span class="category-tag">願景領導</span>
+        <h2>找到我們的 Why</h2>
+        <p class="program-name">教師共備工作坊・上午場</p>
+        <p class="overview">以 Simon Sinek 黃金圈（Why–How–What）與蘋果案例為引，帶領全體教師從個人教育經驗出發挖掘核心價值。流程含教師驕傲故事分享、貢獻（動詞）、影響力、Why 草稿撰寫、驗證與共鳴、行動轉化，最終凝聚南梓共同的 Why 宣言。核心信念：「Why 只能被發現，不能被創造」。</p>
+        <ul class="tag-list">
+          <li>#團隊共識</li><li>#願景領導</li><li>#SimonSinek</li>
+        </ul>
+      </div>
+      <div class="ticket-divider" aria-hidden="true"></div>
+      <div class="ticket-stub">
+        <dl>
+          <div><dt>日期</dt><dd>2025.08.25</dd></div>
+          <div><dt>時數</dt><dd>08:30–11:45</dd></div>
+          <div><dt>對象</dt><dd>全體教師</dd></div>
+        </dl>
+        <a class="view-link" href="https://canva.link/ij42ufz1d3h5td4" target="_blank" rel="noopener noreferrer">查看簡報 ↗</a>
+      </div>
+    </article>
+
+
+
+    <article class="ticket" data-category="culture" data-search="KIST六大核心價值 教師共備工作坊 南梓實驗小學 團隊文化 核心價值 下午場 當責 成長心態 團隊協作 誠信正直 多元包容 健康幸福">
+      <div class="ticket-main">
+        <span class="category-tag">團隊文化</span>
+        <h2>KIST 六大核心價值</h2>
+        <p class="program-name">教師共備工作坊・下午場</p>
+        <p class="overview">承接上午場的 Why 討論，聚焦 KIST 六大核心價值——當責態度、成長心態、團隊協作、誠信正直、多元包容、健康幸福，核心理念為「給孩子公平發展天賦的舞台」。透過小組討論與「價值行動化」矩陣活動（六大價值 × 課堂教學／班級經營／親師互動／同事相處／社區連結），將抽象價值轉化為教師日常行為準則。</p>
+        <ul class="tag-list">
+          <li>#團隊文化</li><li>#核心價值</li><li>#KIST</li>
+        </ul>
+      </div>
+      <div class="ticket-divider" aria-hidden="true"></div>
+      <div class="ticket-stub">
+        <dl>
+          <div><dt>日期</dt><dd>2025.08.25</dd></div>
+          <div><dt>時數</dt><dd>下午場</dd></div>
+          <div><dt>對象</dt><dd>全體教師</dd></div>
+        </dl>
+        <a class="view-link" href="https://canva.link/rx2mtxdyk82xqhu" target="_blank" rel="noopener noreferrer">查看簡報 ↗</a>
+      </div>
+    </article>
+
+
+
+    <article class="ticket" data-category="recruit" data-search="來仙草教書 你必須先知道的十件事 2025 KIST教師聯合招募說明會 仙草實驗小學 李志軒校長 教師招募 學校文化">
+      <div class="ticket-main">
+        <span class="category-tag">教師招募</span>
+        <h2>來仙草教書，你必須先知道的十件事</h2>
+        <p class="program-name">2025 KIST 教師聯合招募說明會 <span class="speaker">李志軒校長</span></p>
+        <p class="overview">以「好逸惡勞莫入此門，故步自封請走它路」開場設下心理門檻，接著用十件真實又幽默的小事，讓有意加入的老師預先體驗仙草的日常——記得隨身攜帶衛生紙(常被氣哭或感動哭)、不能害怕小動物(蝴蝶青蛙蚯蚓，小朋友也算)、喜歡運動(每週三四下班後一起打排球)，用坦率又有溫度的方式呈現學校文化，取代制式的招募簡章。</p>
+        <ul class="tag-list">
+          <li>#教師招募</li><li>#學校文化</li><li>#KIST</li>
+        </ul>
+      </div>
+      <div class="ticket-divider" aria-hidden="true"></div>
+      <div class="ticket-stub">
+        <dl>
+          <div><dt>年度</dt><dd>2025</dd></div>
+          <div><dt>對象</dt><dd>儲備教師</dd></div>
+          <div><dt>主辦</dt><dd>仙草實小</dd></div>
+        </dl>
+        <a class="view-link" href="https://canva.link/9sm8id96fqug1c8" target="_blank" rel="noopener noreferrer">查看簡報 ↗</a>
+      </div>
+    </article>
+
+
+
+    <article class="ticket" data-category="talent" data-search="發展人才 第二屆LEAP 第三堂課 仙草實驗小學 李志軒校長 人才發展 跨世代協作 案例教學 一場矛盾的演講">
+      <div class="ticket-main">
+        <span class="category-tag">人才發展</span>
+        <h2>發展人才</h2>
+        <p class="program-name">第二屆 LEAP・第三堂課 <span class="speaker">李志軒校長</span></p>
+        <p class="overview">以「入場券」開場，邀請學員分享校園中與不同世代共事的矛盾情境（自由 vs 安全、創新 vs 傳統、合作 vs 競爭）。透過案例教學——如「I 人資深教師與 E 人新手教師的紛爭」，從真實衝突情境切入，引導學員反思人才發展與跨世代協作的課題。</p>
+        <ul class="tag-list">
+          <li>#人才發展</li><li>#跨世代協作</li><li>#案例教學</li>
+        </ul>
+      </div>
+      <div class="ticket-divider" aria-hidden="true"></div>
+      <div class="ticket-stub">
+        <dl>
+          <div><dt>日期</dt><dd>2024.10.19</dd></div>
+          <div><dt>對象</dt><dd>LEAP 學員</dd></div>
+          <div><dt>主辦</dt><dd>仙草實小</dd></div>
+        </dl>
+        <a class="view-link" href="https://canva.link/jazjsa52gkif2cr" target="_blank" rel="noopener noreferrer">查看簡報 ↗</a>
+      </div>
+    </article>
+
+
+
+    <article class="ticket" data-category="talent" data-search="絕地求生 山盟海誓策略聯盟 領導決策模擬遊戲 臺南市國教輔導團 2022年終爭霸戰 李志軒 沙漠求生 決策 仙草實驗小學">
+      <div class="ticket-main">
+        <span class="category-tag">人才發展</span>
+        <h2>絕地求生</h2>
+        <p class="program-name">山盟海誓策略聯盟・領導決策模擬遊戲 <span class="speaker">李志軒(仙草實驗小學)</span></p>
+        <p class="overview">以經典「沙漠求生」情境模擬遊戲，帶領臺南市國教輔導團成員體驗個人決策與團隊決策的差異。先用「科技的定義」暖身提問挑戰既有框架，接著讓學員個人閱讀情境、獨立填答，再分組推派主持人與觀察員進行團隊討論決策，最後歸納出：釐清問題比急著找策略重要、領導者只要掌握大方向大原則、決策不該用投票，也不該靠平均或妥協。</p>
+        <ul class="tag-list">
+          <li>#領導決策</li><li>#團隊模擬</li><li>#國教輔導團</li>
+        </ul>
+      </div>
+      <div class="ticket-divider" aria-hidden="true"></div>
+      <div class="ticket-stub">
+        <dl>
+          <div><dt>年度</dt><dd>2022</dd></div>
+          <div><dt>對象</dt><dd>國教輔導團</dd></div>
+          <div><dt>主辦</dt><dd>臺南市教育局</dd></div>
+        </dl>
+        <a class="view-link" href="https://youtu.be/JnqIA8KrGqQ" target="_blank" rel="noopener noreferrer">觀看影片 ↗</a>
+      </div>
+    </article>
+
+
+
+  </main>
+
+  <p class="empty-state" id="emptyState" hidden>沒有符合條件的場次，換個關鍵字試試。</p>
+</div>
+
+<script>
+  (function () {
+    var chips = Array.prototype.slice.call(document.querySelectorAll(".chip"));
+    var tickets = Array.prototype.slice.call(document.querySelectorAll(".ticket"));
+    var searchInput = document.getElementById("searchInput");
+    var emptyState = document.getElementById("emptyState");
+    var visibleCount = document.getElementById("visibleCount");
+    var activeFilter = "all";
+
+    function applyFilters() {
+      var query = searchInput.value.trim().toLowerCase();
+      var shown = 0;
+
+      tickets.forEach(function (ticket) {
+        var matchesCategory = activeFilter === "all" || ticket.dataset.category === activeFilter;
+        var matchesSearch = !query || ticket.dataset.search.toLowerCase().indexOf(query) !== -1;
+        var visible = matchesCategory && matchesSearch;
+        ticket.hidden = !visible;
+        if (visible) shown++;
+      });
+
+      visibleCount.textContent = shown;
+      emptyState.hidden = shown !== 0;
+    }
+
+    chips.forEach(function (chip) {
+      chip.addEventListener("click", function () {
+        chips.forEach(function (c) { c.classList.remove("active"); });
+        chip.classList.add("active");
+        activeFilter = chip.dataset.filter;
+        applyFilters();
+      });
+    });
+
+    searchInput.addEventListener("input", applyFilters);
+  })();
+</script>
+
+</body>
+</html>
